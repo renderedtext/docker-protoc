@@ -15,7 +15,6 @@ blocks:
           commands:
             - checkout
             - make build
-            - make push
       secrets:
         - name: dockerhub-robot
 promotions:
