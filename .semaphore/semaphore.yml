@@ -1,0 +1,17 @@
+version: v1.0
+name: First pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build image
+    task:
+      prologue:
+        commands:
+          - checkout
+      jobs:
+        - name: make build
+          commands:
+            - checkout
+            - make build
