@@ -19,6 +19,6 @@ blocks:
         - name: dockerhub-robot
 promotions:
   - name: Push to DockerHub
-    pipeline_file: pipeline_2.yml
+    pipeline_file: push.yml
     auto_promote:
       when: branch = 'master' AND result = 'passed'
