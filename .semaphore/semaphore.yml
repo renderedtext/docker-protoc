@@ -14,4 +14,7 @@ blocks:
         - name: make build
           commands:
             - checkout
+            - docker login
             - make build
+      secrets:
+        - name: dockerhub-robot
