@@ -1,5 +1,5 @@
 version: v1.0
-name: First pipeline
+name: Build image
 agent:
   machine:
     type: e1-standard-2
@@ -14,7 +14,12 @@ blocks:
         - name: make build
           commands:
             - checkout
-            - docker login
             - make build
+            - make push
       secrets:
         - name: dockerhub-robot
+promotions:
+  - name: Push to DockerHub
+    pipeline_file: pipeline_2.yml
+    auto_promote:
+      when: branch = 'master' AND result = 'passed'
