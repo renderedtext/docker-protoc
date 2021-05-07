@@ -1,4 +1,4 @@
-FROM elixir:1.7-alpine
+FROM elixir:1.8.2-alpine
 MAINTAINER Rendered Text <devs@renderedtext.com>
 
 WORKDIR /tmp
