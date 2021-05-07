@@ -1,0 +1,24 @@
+version: v1.0
+name: Build image
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build image
+    task:
+      prologue:
+        commands:
+          - checkout
+      jobs:
+        - name: make build
+          commands:
+            - checkout
+            - make build
+      secrets:
+        - name: dockerhub-robot
+promotions:
+  - name: Push to DockerHub
+    pipeline_file: push.yml
+    auto_promote:
+      when: branch = 'master' AND result = 'passed'
