@@ -15,8 +15,6 @@ blocks:
           commands:
             - checkout
             - make build
-      secrets:
-        - name: dockerhub-robot
 promotions:
   - name: Push to DockerHub
     pipeline_file: push.yml
