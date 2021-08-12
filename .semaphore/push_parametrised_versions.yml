@@ -1,0 +1,19 @@
+version: v1.0
+name: Push Image to DockerHub - elixir ${{parameters.ELIXIR_VERSION}}, protoc ${{parameters.PROTOC_VERSION}}, protobuf  ${{parameters.PROTOBUF_VERSION}}
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Push
+    task:
+      jobs:
+        - name: build and push parametrised versions
+          commands:
+            - checkout
+            - docker login
+            - make image.build.versions PROTOBUF_VERSION=$PROTOBUF_VERSION ELIXIR_VERSION=$ELIXIR_VERSION PROTOC_VERSION=$PROTOC_VERSION
+            - make push.tagged.versions DOCKER_IMAGE_VERSIONS_TAG=$ELIXIR_VERSION-$PROTOC_VERSION-$PROTOBUF_VERSION
+      secrets:
+        - name: dockerhub-robot
+

@@ -20,3 +20,16 @@ promotions:
     pipeline_file: push.yml
     auto_promote:
       when: branch = 'master' AND result = 'passed'
+  - name: Push Parametrised versions to Dockerhub
+    pipeline_file: push_parametrised_versions.yml
+    parameters:
+      env_vars:
+        - required: true
+          default_value: 1.11.4
+          name: ELIXIR_VERSION
+        - required: true
+          default_value: 3.17.3
+          name: PROTOC_VERSION
+        - required: false
+          description: Latest version will be installed when not set
+          name: PROTOBUF_VERSION

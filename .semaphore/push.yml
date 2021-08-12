@@ -8,7 +8,7 @@ blocks:
   - name: Push
     task:
       jobs:
-        - name: make build & push
+        - name: Elixir v1.8.2, protoc v0.5.4
           commands:
             - checkout
             - docker login
