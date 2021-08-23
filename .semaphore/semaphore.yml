@@ -29,6 +29,6 @@ promotions:
         - required: true
           default_value: 3.17.3
           name: PROTOC_VERSION
-        - required: false
-          description: Latest version will be installed when not set
+        - required: true
+          default_value: 0.7.1
           name: PROTOBUF_VERSION
