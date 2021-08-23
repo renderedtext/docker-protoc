@@ -35,7 +35,7 @@ Resulting Docker images are tagged (as described below) and pushed to Dockerhub 
 Available parameters:
 
 - Elixir version (required, default `v1.11.4`)
-- `protoc` version (required, default `3.17.3`)
+- `protoc` version (required, default `3.17.3`) latest version can be found here: https://github.com/protocolbuffers/protobuf/tags
 - Protobuf version (optional)
 
 This promotion constructs a tag in the following form:
