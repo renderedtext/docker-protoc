@@ -13,7 +13,6 @@ blocks:
       jobs:
         - name: make build
           commands:
-            - checkout
             - make build
 promotions:
   - name: Push to DockerHub
