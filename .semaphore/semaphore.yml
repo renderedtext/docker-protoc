@@ -14,6 +14,8 @@ blocks:
         - name: make build
           commands:
             - make build
+      secrets:
+        - name: hamir-docker
 promotions:
   - name: Push to DockerHub
     pipeline_file: push.yml
