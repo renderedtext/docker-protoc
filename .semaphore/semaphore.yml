@@ -14,8 +14,10 @@ blocks:
         - name: make build
           commands:
             - make build
+            - make configure.gcloud
+            - make push
       secrets:
-        - name: somethingsomething
+        - name: container-registry-writer
 promotions:
   - name: Push to DockerHub
     pipeline_file: push.yml

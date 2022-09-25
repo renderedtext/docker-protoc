@@ -11,7 +11,8 @@ blocks:
         - name: build and push parametrised versions
           commands:
             - checkout
-            - docker login
+            - make pull
+            - make configure.gcloud
             - make image.build.versions PROTOBUF_VERSION=$PROTOBUF_VERSION ELIXIR_VERSION=$ELIXIR_VERSION PROTOC_VERSION=$PROTOC_VERSION
             - make push.tagged.versions DOCKER_IMAGE_VERSIONS_TAG=$ELIXIR_VERSION-$PROTOC_VERSION-$PROTOBUF_VERSION
       secrets:

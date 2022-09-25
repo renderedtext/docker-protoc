@@ -1,6 +1,6 @@
 .PHONY: build push setup
 
-REPO=renderedtext/protoc
+REPO=us.gcr.io/semaphore2-prod/protoc
 IMAGE_LATEST=$(REPO):latest
 DOCKER_IMAGE_TAG=$(shell git rev-parse --short HEAD)
 
@@ -26,6 +26,10 @@ push:
 		docker push $(REPO):$(DOCKER_IMAGE_TAG)
 		docker push $(IMAGE_LATEST)
 
+pull: 
+	docker pull $(IMAGE_LATEST)
+	docker pull $(REPO):$(DOCKER_IMAGE_TAG)
+
 push.tagged.versions:
 		docker tag $(IMAGE_LATEST) $(REPO):$(DOCKER_IMAGE_VERSIONS_TAG)
 		docker push $(REPO):$(DOCKER_IMAGE_VERSIONS_TAG)
@@ -34,3 +38,7 @@ setup:
 	docker run --privileged --rm tonistiigi/binfmt --install all
 	docker buildx create --name mybuilder
 	docker buildx use mybuilder
+
+configure.gcloud:
+	gcloud auth activate-service-account $(GCP_REGISTRY_WRITER_EMAIL) --key-file ~/gce-registry-writer-key.json
+	gcloud --quiet auth configure-docker
