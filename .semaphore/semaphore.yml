@@ -13,8 +13,8 @@ blocks:
       jobs:
         - name: make build
           commands:
-            - make build
             - make configure.gcloud
+            - make build
             - make push
       secrets:
         - name: container-registry-writer
