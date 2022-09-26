@@ -12,7 +12,7 @@ DOCKER_IMAGE_VERSIONS_TAG=$(ELIXIR_VERSION)-$(PROTOC_VERSION)-$(PROTOBUF_VERSION
 
 image.build.versions: setup
 		docker buildx build \
-			--platform linux/amd64,linux/arm64 \
+			--platform linux/amd64,linux/arm64 --push\
 			-t $(REPO) -t $(IMAGE_LATEST) . \
 			--build-arg ELIXIR_VERSION=$(ELIXIR_VERSION) \
 			--build-arg PROTOC_VERSION=$(PROTOC_VERSION) \
